@@ -16,26 +16,23 @@ $(document).ready(
   		});	
 	}
 );
-document.querySelector('#editor1').addEventListener('click', editarC1);
-function editarC1(){
-	$(".columna1>.texto").each(function(index){
+function editarC1(columna){
+	$("."+columna+">.texto").each(function(index){
 		//let text = $(this).text();
 		$(this).replaceWith("<td class='texto'><input value=" +$(this).text()+"></input></td>");
 		//$("<input value=" +text+"></input>").appendTo($(this));
 	}
 	);
-	$(".columna1>.emoticon").each(function(index){
+	$("."+columna+">.emoticon").each(function(index){
 		//let text = $(this).text();
 		$(this).replaceWith("<td class='emoticon'><select><option value='bien'>bien</option><option value='mal'>mal</option></select></input></td>");
 		//$("<input value=" +text+"></input>").appendTo($(this));
 	}
 	);
-	$(".columna1>.editor").each(function(index){
+	$("."+columna+">.editor").each(function(index){
 		//let text = $(this).text();
 		$(this).replaceWith("<td class='editando'>En edicion</input></td>");
 		//$("<input value=" +text+"></input>").appendTo($(this));
 	}
 	);
-	
-	
 }
