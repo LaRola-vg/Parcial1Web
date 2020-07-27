@@ -1,0 +1,24 @@
+body{
+	background-color: #9FD7FF;
+	font-family: Arial;
+}
+
+table{
+	width: 60%;
+	text-align: center;
+	margin: auto;
+}
+th{
+	background-color: #6A7075;
+	color: white;
+}
+td{
+	background-color: #D4E3ED;
+	color: #6A7075;
+}
+.editor{
+	color: #0780E5;
+}
+.editando{
+	color: #6A7075;
+}
