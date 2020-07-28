@@ -18,11 +18,27 @@ function editarC1(columna){
 	if(editando==0){
 		editando=1;
 		$("."+columna+">.texto").each(function(index){
-			$(this).replaceWith("<td class='texto'><input id='"+columna+"-"+index+"' value=" +$(this).text()+"></input></td>");
+			var i ="hi";
+			if(index==0){
+				i="alimento"
+			}
+			if(index==1){
+				i="calorias"
+			}
+			if(index==2){
+				i="grasas"
+			}
+			if(index==3){
+				i="proteina"
+			}
+			if(index==3){
+				i="carbohidratos"
+			}
+			$(this).replaceWith("<td class='texto'><input id='"+i+"' type='text' name='"+i+"' value=" +$(this).text()+"></td>");
 		}
 		);
 		$("."+columna+">.emoticon").each(function(index){
-			$(this).replaceWith("<td class='emoticon'><select id='"+columna+"-Emoticon'><option value='bien'>bien</option><option value='mal'>mal</option></select></input></td>");
+			$(this).replaceWith("<td class='emoticon'><select id='Emoticon'><option value='bien'>bien</option><option value='mal'>mal</option></select></input></td>");
 		}
 		);
 		$("."+columna+">.editor").each(function(index){
@@ -33,7 +49,7 @@ function editarC1(columna){
 		console.log($(""+columna+"-0").val());
 		var cambios = document.getElementById('mostrarCambio');
 		cambios.innerHTML = 'Pulse Aceptar para guardar los cambios o cancelar para anularlos'+
-		'<form name = "formulario" onsubmit="Aceptar('+parametro+')" onreset="anular()">'+
+		'<form name = "formulario" action="http://aprenderaprogramar.com" onsubmit="Aceptar()" onreset="anular()">'+
 		'<input class="boton" type = "submit" value="Aceptar"> <input class="boton" type="reset" value="Cancelar">';
 	}else{
 		alert('Solo se puede editar una línea. Recargue la página para poder editar otra')
@@ -42,16 +58,19 @@ function editarC1(columna){
 	
 
 };
-function Aceptar(col){
-	console.log($(""+col+"-0").val());
-	var datos={alimento:$(""+col+"-0").val(),
-			calorias:$(""+col+"-1").val(),
-			grasas:$(""+col+"-2").val(),
-			proteinas:$(""+col+"-3").val(),
-			carbohidratos:$(""+col+"-4").val()}
-//$.get("Formulario2", datos, procesar)
-//document.formulario.submit();
-};
+function Aceptar(){
+var cambios = document.getElementById('mostrarCambio');
+cambios.innerHTML = 'Pulse Aceptar para guardar los cambios o cancelar para anularlos'+
+'<form name = "formulario" action="http://aprenderaprogramar.com" method="get" onsubmit="Aceptar()" onreset="anular()">'+
+'<input type="hidden" name="alimento" value="'+document.querySelector('#alimento').value+'">'+
+'<input type="hidden" name="calorias" value="'+document.querySelector('#calorias').value+'">'+
+'<input type="hidden" name="grasas" value="'+document.querySelector('#grasas').value+'">'+
+'<input type="hidden" name="proteina" value="'+document.querySelector('#proteina').value+'">'+
+'<input type="hidden" name="carbohidratos" value="'+document.querySelector('#carbohidratos').value+'">'+
+'<input class="boton" type = "submit" value="Aceptar"> <input class="boton" type="reset" value="Cancelar">';
+document.formulario.submit();
+
+}
 
 function Cancelar(){
 window.location.reload();
